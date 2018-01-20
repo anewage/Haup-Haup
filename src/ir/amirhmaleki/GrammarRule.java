@@ -8,20 +8,20 @@ public class GrammarRule {
     public static int ACCEPT = 1;
     public static int OTHER = 0;
 
-    private String symbol;
-    private int type;
-    private String[] production;
+    public String lhs;
+    public int type;
+    public String[] rhs;
 
-    public GrammarRule(String symbol, int type, String[] production){
-        this.symbol = symbol;
+    public GrammarRule(String symbol, int type, String[] rhs){
+        this.lhs = symbol;
         this.type = type;
-        this.production = production;
+        this.rhs = rhs;
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder(symbol + "->");
-        for (String sym :production)
+        StringBuilder result = new StringBuilder(lhs + " -> ");
+        for (String sym :rhs)
             result.append(sym).append(" ");
         return result.toString();
     }
