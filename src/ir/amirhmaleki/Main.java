@@ -24,7 +24,6 @@ public class Main {
 
     /**
      * Does the main job!
-     * @throws Exception
      */
     public void initiateParsing() throws Exception {
         understandRules();
@@ -34,9 +33,11 @@ public class Main {
     /**
      * Reads the input grammar and saves the rules inside rules vector
      */
-    private void understandRules() {
+    private void understandRules() throws Exception {
         String[] tokens = null;
         tokens = sc.nextLine().split(" ");
+        if (tokens[0].equalsIgnoreCase("end"))
+            throw new Exception("Empty grammar!");
         GrammarRule accept = new GrammarRule(tokens[0], GrammarRule.ACCEPT, Arrays.copyOfRange(tokens, 2, tokens.length));
         rules.add(accept);
         while(sc.hasNextLine()) {
