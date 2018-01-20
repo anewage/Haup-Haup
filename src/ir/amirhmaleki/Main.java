@@ -13,7 +13,10 @@ public class Main {
     private Vector<GrammarRule> rules;
     private FFCalculator ffCalculator;
 
-    public Main() throws FileNotFoundException {
+    /**
+     * Constructor method
+     */
+    public Main(){
         this.sc = new Scanner(System.in);
         this.rules = new Vector<GrammarRule>();
         ffCalculator = new FFCalculator();
