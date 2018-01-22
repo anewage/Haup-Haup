@@ -12,6 +12,7 @@ public class Main {
     private Scanner sc;
     private Vector<GrammarRule> rules;
     private FFCalculator ffCalculator;
+    private PTGenerator ptGenerator;
 
     /**
      * Constructor method
@@ -20,14 +21,18 @@ public class Main {
         this.sc = new Scanner(System.in);
         this.rules = new Vector<GrammarRule>();
         ffCalculator = new FFCalculator();
+        ptGenerator = new PTGenerator();
     }
 
     /**
      * Does the main job!
      */
     public void initiateParsing() throws Exception {
+        // First read the grammar and identify its rules
         understandRules();
+        // Calculate first and follow set
         ffCalculator.calculate(rules);
+        ptGenerator.generateAutomata(rules);
     }
 
     /**

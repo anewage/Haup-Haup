@@ -1,3 +1,11 @@
+E : T Y
+T : "int"
+T : "(" E ")"
+Y : "+" E
+Y : "epsilon"
+end
+
+
 S : E
 E : T ";"
 E : T "+" E

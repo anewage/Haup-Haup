@@ -14,12 +14,15 @@ public class FFCalculator {
         follow = new Hashtable<String, Vector<String>>();
     }
 
+    /**
+     * Calculates and saves the FirstSet for each symbol, inside the follow table
+     */
     private void calculateFirstSet(){
         // First, Iterating over all of the terminals
         boolean changed = false;
         for (GrammarRule rule : rules) {
             // Adding the terminal symbol to first set
-            if (rule.rhs[0].contains("\"")){
+            if (GrammarRule.isTerminal(rule.rhs[0])){
                 Vector<String> tmp = first.getOrDefault(rule.lhs, new Vector<String>());
                 if (!vectorAlreadyContains(tmp, rule.rhs[0], false)){
                     tmp.add(rule.rhs[0]);
@@ -33,7 +36,7 @@ public class FFCalculator {
         while(changed){
             changed = false;
             for (GrammarRule rule : rules) {
-                if (!rule.rhs[0].contains("\"")){
+                if (!GrammarRule.isTerminal(rule.rhs[0])){
                     Vector<String> tempFirst = first.getOrDefault(rule.rhs[0], new Vector<String>());
                     Object[] result = unionStringArray(tempFirst, first.getOrDefault(rule.lhs, new Vector<String>()));
                     boolean flag = (Boolean) result[1];
@@ -46,8 +49,22 @@ public class FFCalculator {
         }
     }
 
-    private void calculateFollowSet(){
 
+    /**
+     * Calculates and saves the FollowSet for each symbol, inside the follow table
+     */
+    private void calculateFollowSet(){
+        // TODO
+        // First, Iterating over all of the terminals
+        boolean changed = false;
+        for (GrammarRule rule : rules) {
+            for (int i = 0; i < rule.rhs.length; i++) {
+                String symbol = rule.rhs[i];
+                if (!GrammarRule.isTerminal(symbol)){
+
+                }
+            }
+        }
     }
 
     private boolean vectorAlreadyContains(Vector<String> vec, String str, boolean ignoreCase){
@@ -86,8 +103,9 @@ public class FFCalculator {
     public void calculate(Vector<GrammarRule> rules){
         this.rules = rules;
         calculateFirstSet();
-        System.out.println(first);
-        calculateFollowSet();
+        System.out.println("First Set: " + first);
+//        calculateFollowSet();
+//        System.out.println(follow);
     }
 
 
