@@ -1,0 +1,29 @@
+Input:
+
+S : A
+S : B
+A : "b" A
+A : "d"
+B : "a" B
+B : "c"
+end
+
+Output:
+
+First Set: {A=["b", "d"], S=["b", "d", "a", "c"], B=["a", "c"]}
+State #0:
+	S -> . A 
+	A -> . "b" A 
+	A -> . "d" 
+State #1:
+	S -> A  .
+State #2:
+	A -> "b" . A 
+	A -> . "b" A 
+	A -> . "d" 
+State #3:
+	A -> "b" A  .
+State #4:
+	A -> "d"  .
+State #3:
+	A -> "d"  .

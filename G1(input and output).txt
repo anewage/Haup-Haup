@@ -1,0 +1,43 @@
+Input:
+
+S : "a" S
+S : "b" A
+S : "c" B
+A : "d"
+A : "h"
+B : "r"
+B : "g"
+end
+
+Output:
+
+First Set: {A=["d", "h"], S=["a", "b", "c"], B=["r", "g"]}
+State #0:
+	S -> . "a" S
+State #1:
+	S -> "a" . S
+	S -> . "a" S
+	S -> . "b" A
+	S -> . "c" B
+State #2:
+	S -> "a" S  .
+State #3:
+	S -> "b" . A
+	A -> . "d"
+	A -> . "h"
+State #4:
+	S -> "b" A  .
+State #5:
+	A -> "d"  .
+State #6:
+	A -> "h"  .
+State #4:
+	S -> "c" . B
+	B -> . "r"
+	B -> . "g"
+State #5:
+	S -> "c" B  .
+State #6:
+	B -> "r"  .
+State #7:
+	B -> "g"  .

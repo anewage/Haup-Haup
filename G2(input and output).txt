@@ -1,0 +1,56 @@
+Input:
+S : E
+E : T ";"
+E : T "+" E
+T : "int"
+T : "(" E ")"
+end
+
+Output:
+
+First Set: {T=["int", "("], S=["int", "("], E=["int", "("]}
+State #0:
+	S -> . E
+	E -> . T ";"
+	E -> . T "+" E
+	T -> . "int"
+	T -> . "(" E ")"
+State #1:
+	S -> E  .
+State #2:
+	E -> T . ";"
+	E -> T . "+" E
+State #3:
+	E -> T ";"  .
+State #4:
+	E -> T "+" . E
+	E -> . T ";"
+	E -> . T "+" E
+	T -> . "int"
+	T -> . "(" E ")"
+State #5:
+	E -> T "+" E  .
+State #6:
+	T -> "int"  .
+State #7:
+	T -> "(" . E ")"
+	E -> . T ";"
+	E -> . T "+" E
+	T -> . "int"
+	T -> . "(" E ")"
+State #8:
+	T -> "(" E . ")"
+State #9:
+	T -> "(" E ")"  .
+State #3:
+	T -> "int"  .
+State #4:
+	T -> "(" . E ")"
+	E -> . T ";"
+	E -> . T "+" E
+	T -> . "int"
+	T -> . "(" E ")"
+State #5:
+	T -> "(" E . ")"
+State #6:
+	T -> "(" E ")"  .

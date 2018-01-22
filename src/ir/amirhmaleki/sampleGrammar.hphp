@@ -12,3 +12,13 @@ E : T "+" E
 T : "int"
 T : "(" E ")"
 end
+
+
+S : "a" S
+S : "b" A
+S : "c" B
+A : "d"
+A : "h"
+B : "r"
+B : "g"
+end
